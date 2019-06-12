@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 class AddPetForm extends Component {
 
@@ -17,7 +18,7 @@ class AddPetForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log('submitted!!!');
+        this.props.dispatch({type: 'ADD_PET', payload: this.state})
     }
 
     render() {
@@ -56,4 +57,4 @@ class AddPetForm extends Component {
     }
 }
 
-export default AddPetForm;
+export default connect()(AddPetForm);
