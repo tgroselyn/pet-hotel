@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
 import {Provider} from 'react-redux';
-import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 import * as serviceWorker from './serviceWorker';
+import rootReducer from './redux/reducers/index';
+import rootSaga from './redux/sagas/index';
 
 const sagaMiddleware = createSagaMiddleware();
 
