@@ -5,8 +5,24 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
+                <h2>Add Pet</h2>
                 <AddPetForm />
-                <p>Hello from Dashboard</p>
+                <h2>History</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Owner</th>
+                            <th>Pet</th>
+                            <th>Breed</th>
+                            <th>Color</th>
+                            <th>Checked In</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {/* table rows */}
+                    </tbody>
+                </table>
             </div>
         )
     }

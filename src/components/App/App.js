@@ -9,6 +9,9 @@ function App() {
   return (
     <Router>
       <div className="App">
+          <header>
+            <h1>Pet Hotel</h1>
+          </header>
           <Nav />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/manage-owners" component={ManageOwners} />
