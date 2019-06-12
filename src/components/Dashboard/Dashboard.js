@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
+import AddPetForm from './AddPetForm';
 
 class Dashboard extends Component {
     render() {
         return (
-            <p>Hello from Dashboard</p>
+            <div>
+                <AddPetForm />
+                <p>Hello from Dashboard</p>
+            </div>
         )
     }
 }
