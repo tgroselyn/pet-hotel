@@ -1,4 +1,7 @@
-const ownersReducer = (state = {}, action) => {
+const ownersReducer = (state = [], action) => {
+    if (action.type === 'SET_OWNERS') {
+        return action.payload;
+    }
     return state;
 };
 
