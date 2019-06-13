@@ -17,7 +17,7 @@ class ManageOwners extends Component {
         const tableRows = this.props.owners.map(owner => {
             return <tr key={owner.id}>
                 <td>{owner.name}</td>
-                <td>number of pets</td>
+                <td>{owner.numberOfPets}</td>
                 <td><span onClick={() => this.handleDelete(owner.id)}>Delete</span></td>
             </tr>
         })

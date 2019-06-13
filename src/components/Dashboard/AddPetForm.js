@@ -4,9 +4,9 @@ import {connect} from 'react-redux';
 class AddPetForm extends Component {
 
     state = {
-        petName: '',
-        petColor: '',
-        petBreed: '',
+        name: '',
+        color: '',
+        breed: '',
         ownerName: '',
     }
 
@@ -25,31 +25,34 @@ class AddPetForm extends Component {
 
         console.log(this.state);
 
+        const ownerNames = this.props.owners.map(owner => {
+            return <option key={owner.id} value={owner.name}>{owner.name}</option>
+        })
+
         return (
             <form onSubmit={this.handleSubmit}>
                 <input
                     type="text"
                     placeholder="pet name"
                     value={this.state.petName}
-                    onChange={this.handleChange('petName')}
+                    onChange={this.handleChange('name')}
                 />
                 <input
                     type="text"
                     placeholder="pet color"
                     value={this.state.petColor}
-                    onChange={this.handleChange('petColor')}
+                    onChange={this.handleChange('color')}
                 />
                 <input
                     type="text"
                     placeholder="pet breed"
                     value={this.state.petBreed}
-                    onChange={this.handleChange('petBreed')}
+                    onChange={this.handleChange('breed')}
                 />
                 <select
                     value={this.state.ownerName}
                     onChange={this.handleChange('ownerName')} >
-                    <option>Thomas</option>
-                    <option>Viji</option>
+                    {ownerNames}
                 </select>
                 <button type="submit">Submit</button>
             </form>
@@ -57,4 +60,10 @@ class AddPetForm extends Component {
     }
 }
 
-export default connect()(AddPetForm);
+const mapRedux = redux => {
+    return {    
+        owners: redux.owners
+    }
+}
+
+export default connect(mapRedux)(AddPetForm);
