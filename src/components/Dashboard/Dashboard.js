@@ -4,8 +4,16 @@ import AddPetForm from './AddPetForm';
 
 class Dashboard extends Component {
 
+    handleCheckin = petId => {
+        this.props.dispatch({ type: 'CHECK_IN_PET', payload: petId });
+    }
+
+    handleCheckout = petId => {
+        this.props.dispatch({type: 'CHECK_OUT_PET', payload: petId});
+    }
+    
     handleDelete = petId => {
-        console.log(petId);
+        this.props.dispatch({type: 'REMOVE_PET', payload: petId});
     }
 
     render() {
@@ -20,8 +28,8 @@ class Dashboard extends Component {
                 <td>
                     <span onClick={() => this.handleDelete(pet.id)}>Delete</span>
                     {pet.checkedIn ?
-                    <span onClick={this.handleCheckout}>Check out</span> :
-                    <span onClick={this.handleCheckin}>Check in</span>
+                    <span onClick={() => this.handleCheckout(pet.id)}>Check out</span> :
+                    <span onClick={() => this.handleCheckin(pet.id)}>Check in</span>
                     }
                 </td>
             </tr>
