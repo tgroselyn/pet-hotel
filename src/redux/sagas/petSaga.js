@@ -12,7 +12,7 @@ function* addPet(action) {
 
 function* fetchPets(action) {
     try {
-        let petResponse = yield axios.get('/api/get.pet.php');
+        let petResponse = yield axios.get('/php-pet/api/get.pet.php');
         yield put({ type: 'SET_PETS', payload: petResponse.data });
     } catch (err) {
         console.log('fetchPets saga error:', err);
