@@ -1,8 +1,32 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import AddPetForm from './AddPetForm';
 
 class Dashboard extends Component {
+
+    handleDelete = petId => {
+        console.log(petId);
+    }
+
     render() {
+        
+        const rows = this.props.pets.map(pet => {
+            return <tr key={pet.id}>
+                <td>{pet.ownerName}</td>
+                <td>{pet.petName}</td>
+                <td>{pet.petBreed}</td>
+                <td>{pet.petColor}</td>
+                <td>{pet.checkedIn || 'no'}</td>
+                <td>
+                    <span onClick={() => this.handleDelete(pet.id)}>Delete</span>
+                    {pet.checkedIn ?
+                    <span onClick={this.handleCheckout}>Check out</span> :
+                    <span onClick={this.handleCheckin}>Check in</span>
+                    }
+                </td>
+            </tr>
+        })
+
         return (
             <div>
                 <h2>Add Pet</h2>
@@ -20,7 +44,7 @@ class Dashboard extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* table rows */}
+                        {rows}
                     </tbody>
                 </table>
             </div>
@@ -28,4 +52,10 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard;
+const mapRedux = redux => {
+    return {
+        pets : redux.pets
+    }
+}
+
+export default connect(mapRedux)(Dashboard);

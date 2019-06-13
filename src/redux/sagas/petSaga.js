@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function* addPet(action) {
     try {
-        yield axios.post('post.pet.php', action.payload);
+        yield axios.post('/api/post.pet.php', action.payload);
         yield put({ type: 'FETCH_PETS' });
     } catch (err) {
         console.log('addPet saga error:', err);
@@ -12,7 +12,7 @@ function* addPet(action) {
 
 function* fetchPets(action) {
     try {
-        let petResponse = yield axios.get('get.pet.php');
+        let petResponse = yield axios.get('/api/get.pet.php');
         yield put({ type: 'SET_PETS', payload: petResponse.data });
     } catch (err) {
         console.log('fetchPets saga error:', err);
@@ -21,7 +21,7 @@ function* fetchPets(action) {
 
 function* removePet(action) {
     try {
-        yield axios.delete('delete.pet.php', action.payload);
+        yield axios.delete('/api/delete.pet.php', action.payload);
         yield put({ type: 'FETCH_PETS' });
     } catch (err) {
         console.log('removePet saga error:', err);
@@ -30,7 +30,7 @@ function* removePet(action) {
 
 function* checkInPet(action) {
     try {
-        yield axios.put('put.checkin.php', action.payload);
+        yield axios.put('/api/put.checkin.php', action.payload);
         yield put({ type: 'FETCH_PETS' });
     } catch (err) {
         console.log('checkInPet saga error:', err);
@@ -39,7 +39,7 @@ function* checkInPet(action) {
 
 function* checkOutPet(action) {
     try {
-        yield axios.put('put.checkout.php', action.payload);
+        yield axios.put('/api/put.checkout.php', action.payload);
         yield put({ type: 'FETCH_PETS' });
     } catch (err) {
         console.log('checkOutPet saga error:', err);
