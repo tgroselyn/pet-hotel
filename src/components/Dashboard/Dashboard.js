@@ -28,10 +28,10 @@ class Dashboard extends Component {
                 <td>{pet.name}</td>
                 <td>{pet.breed}</td>
                 <td>{pet.color}</td>
-                <td>{pet.is_checked_in || 'no'}</td>
+                <td>{pet.is_checked_in !== 'Null' ? pet.is_checked_in : 'no'}</td>
                 <td>
                     <span onClick={() => this.handleDelete(pet.id)}>Delete</span>
-                    {pet.checkedIn ?
+                    {pet.is_checked_in !== 'Null' ?
                     <span onClick={() => this.handleCheckout(pet.id)}>Check out</span> :
                     <span onClick={() => this.handleCheckin(pet.id)}>Check in</span>
                     }
